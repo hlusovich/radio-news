@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:radio_news/core/constants/offset.constants.dart';
 import 'package:radio_news/core/theme/app_colors.dart';
+import 'package:radio_news/routing/enums/routing.enum.dart';
 import 'package:rive/rive.dart';
 
 class InitializationScreenWidget extends StatelessWidget {
@@ -45,7 +46,9 @@ class InitializationScreenWidget extends StatelessWidget {
                 ),
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.of(context).pushNamed(RoutingEnum.playerList.name);
+            },
             child: const Text(
               'Start App',
               style: TextStyle(color: Colors.white, fontSize: 24),
