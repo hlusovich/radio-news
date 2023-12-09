@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:radio_news/core/components/initialization_screen/initialization_screen.widget.dart';
 import 'package:radio_news/routing/routing.dart';
 
 void main() {

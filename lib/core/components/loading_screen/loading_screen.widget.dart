@@ -9,11 +9,12 @@ class LoadingScreenWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: ColorFiltered(
-          colorFilter: ColorFilter.mode(
-            Colors.yellow,
-            BlendMode.modulate,
-          ),
-          child: RiveAnimation.asset('assets/rive/loading.riv')),
+        colorFilter: ColorFilter.mode(
+          Colors.yellow,
+          BlendMode.modulate,
+        ),
+        child: RiveAnimation.asset('assets/rive/loading.riv'),
+      ),
     );
   }
 }
