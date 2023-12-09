@@ -47,7 +47,7 @@ class InitializationScreenWidget extends StatelessWidget {
               ),
             ),
             onPressed: () {
-              Navigator.of(context).pushNamed(RoutingEnum.playerList.name);
+              Navigator.of(context).pushNamed(RoutingEnum.player.name);
             },
             child: const Text(
               'Start App',
