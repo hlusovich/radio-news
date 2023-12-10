@@ -10,16 +10,18 @@ class PlayerSound extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColorFiltered(
-      colorFilter: ColorFilter.mode(
-        AppColors.white,
-        BlendMode.srcIn,
-      ),
-      child: RiveAnimation.asset(
-        'assets/rive/sound.riv',
-        controllers: [
-          controller,
-        ],
+    return ClipOval(
+      child: ColorFiltered(
+        colorFilter: ColorFilter.mode(
+          AppColors.white,
+          BlendMode.srcIn,
+        ),
+        child: RiveAnimation.asset(
+          'assets/rive/sound.riv',
+          controllers: [
+            controller,
+          ],
+        ),
       ),
     );
   }
