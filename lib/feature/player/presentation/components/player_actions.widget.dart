@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:radio_news/core/constants/offset.constants.dart';
-import 'package:radio_news/core/theme/app_colors.dart';
+import 'package:radio_news/feature/player/domain/bloc/player.bloc.dart';
 import 'package:radio_news/feature/player/presentation/components/buttons/player_action_play.widget.dart';
-import 'package:radio_news/feature/player/presentation/components/painter/triangle_painter.dart';
 import 'package:radio_news/feature/player/presentation/enums/rotation.enum.dart';
-import 'package:rive/rive.dart';
 
+import '../../domain/bloc/player.events.dart';
 import 'buttons/player_action_change.widget.dart';
 
 class PlayerActions extends StatelessWidget {
@@ -25,14 +24,23 @@ class PlayerActions extends StatelessWidget {
         ),
         Expanded(
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const PlayerActionChange(),
+              PlayerActionChange(
+                onChange: () {},
+              ),
+              const SizedBox(
+                width: OffsetConstants.m,
+              ),
               PlayerActionPlay(
                 onPlayToggle: onPlayToggle,
               ),
-              const PlayerActionChange(
+              const SizedBox(
+                width: OffsetConstants.m,
+              ),
+              PlayerActionChange(
+                onChange: () {},
                 direction: RotationEnum.right,
               ),
             ],

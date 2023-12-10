@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:radio_news/core/theme/app_colors.dart';
-import 'package:radio_news/feature/player/presentation/components/painter/triangle_painter.dart';
 import 'package:radio_news/feature/player/presentation/enums/rotation.enum.dart';
-import 'package:rive/rive.dart';
 import 'dart:math' as math;
+
+import 'package:radio_news/feature/player/presentation/painter/triangle_painter.dart';
+
 class PlayerActionChange extends StatelessWidget {
+  static const rotationAngle = math.pi / 2;
   final VoidCallback? onChange;
   final RotationEnum direction;
-
 
   const PlayerActionChange({this.onChange, this.direction = RotationEnum.left, super.key});
 
@@ -18,54 +19,51 @@ class PlayerActionChange extends StatelessWidget {
     return SizedBox(
       height: 100,
       width: 100,
-      child: ClipOval(
-        child: ColoredBox(
-          color: AppColors.main2,
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: ElevatedButton(
-              style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.orange),
-                padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
-                shape: MaterialStateProperty.all(
-                  const CircleBorder(),
+      child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(AppColors.main),
+          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
+          shape: MaterialStateProperty.all(
+            const CircleBorder(),
+          ),
+        ),
+        onPressed: onChange,
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Positioned(
+              left: direction == RotationEnum.left ? null : 16,
+              child: Transform.rotate(
+                angle: direction.value * rotationAngle,
+                child: SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: CustomPaint(
+                    painter: TrianglePainter(
+                      strokeColor: Colors.white,
+                      paintingStyle: PaintingStyle.fill,
+                    ),
+                  ),
                 ),
               ),
-              onPressed: onChange,
-              child: Stack(
-                clipBehavior: Clip.none,
-                children: [
-                  Positioned(
-                    left: direction == RotationEnum.left ? null : 20,
-                    child: Transform.rotate(
-                      angle: direction.value *  math.pi / 2,
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: CustomPaint(
-                          painter: TrianglePainter(color: AppColors.white),
-                        ),
-                      ),
+            ),
+            Positioned(
+              right: direction == RotationEnum.right ? null : 16,
+              child: Transform.rotate(
+                angle: direction.value * rotationAngle,
+                child: SizedBox(
+                  width: 30,
+                  height: 30,
+                  child: CustomPaint(
+                    painter: TrianglePainter(
+                      strokeColor: Colors.white,
+                      paintingStyle: PaintingStyle.fill,
                     ),
                   ),
-                  Positioned(
-                    right: direction == RotationEnum.right ? null : 20,
-
-                    child: Transform.rotate(
-                      angle: direction.value * math.pi / 2,
-                      child: SizedBox(
-                        width: 40,
-                        height: 40,
-                        child: CustomPaint(
-                          painter: TrianglePainter(color: AppColors.white),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

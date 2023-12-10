@@ -48,16 +48,12 @@ class _PlayerActionPlayState extends State<PlayerActionPlay> {
   Widget build(BuildContext context) {
     final artboard = _playArtboard;
     return  SizedBox(
-      height: 110,
-      width: 110,
+      height: 120,
+      width: 120,
       child: ClipOval(
         child: artboard == null
             ? const SizedBox()
-            : ColoredBox(
-          color: AppColors.main2,
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: ClipOval(
+            : ClipOval(
               child: ElevatedButton(
                 style: ButtonStyle(
                   padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
@@ -66,19 +62,20 @@ class _PlayerActionPlayState extends State<PlayerActionPlay> {
                   ),
                 ),
                 onPressed: _togglePlayButtonAnimation,
-                child: ColorFiltered(
-                  colorFilter: ColorFilter.mode(
-                      Colors.blue,
-                      BlendMode.screen
-                  ),
-                  child: Rive(
-                    artboard: artboard,
+                child: Transform.scale(
+                  scale: 2,
+                  child: ColorFiltered(
+                    colorFilter: ColorFilter.mode(
+                        AppColors.main,
+                        BlendMode.screen,
+                    ),
+                    child: Rive(
+                      artboard: artboard,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ),
       ),
     );
   }
