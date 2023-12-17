@@ -1,0 +1,1 @@
+const baseUrl= 'https://newsapi.org/v2/everything?q=tesla&from=2023-11-17&sortBy=publishedAt&apiKey=9c22a96b9b274c099cc2e4694e62de41';

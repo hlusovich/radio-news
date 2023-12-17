@@ -12,7 +12,7 @@ class InitializationScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.darkBlue,
       body: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -24,10 +24,23 @@ class InitializationScreenWidget extends StatelessWidget {
             style: GoogleFonts.pacifico(
                 textStyle: TextStyle(fontSize: 60, color: AppColors.main, fontWeight: FontWeight.bold)),
           ),
-          const Expanded(
+          Expanded(
             child: Center(
-              child: RiveAnimation.asset(
-                'assets/rive/initialization.riv',
+              child: Stack(
+                children: [
+                  const RiveAnimation.asset(
+                    'assets/rive/initialization_dark.riv',
+                  ),
+                  Positioned(
+                    bottom: 0,
+                    right: 0,
+                    child: Container(
+                      height: 100,
+                      color: AppColors.darkBlue,
+                      width: MediaQuery.of(context).size.width,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -40,10 +53,7 @@ class InitializationScreenWidget extends StatelessWidget {
                 ),
               ),
               padding: MaterialStateProperty.all<EdgeInsets>(
-                const EdgeInsets.symmetric(
-                  vertical: OffsetConstants.m,
-                  horizontal: OffsetConstants.l
-                ),
+                const EdgeInsets.symmetric(vertical: OffsetConstants.m, horizontal: OffsetConstants.l),
               ),
             ),
             onPressed: () {

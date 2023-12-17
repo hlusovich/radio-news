@@ -8,4 +8,6 @@ abstract final class AppColors {
   static  Color main2 = Colors.white;
   static Color player = const Color(0xFFFD338A);
   static  Color white = const Color(0xffffffff);
+  static  Color grey = Colors.grey.withOpacity(0.3);
+  static const darkBlue = Color(0xff212331);
 }

@@ -19,51 +19,65 @@ class PlayerActionChange extends StatelessWidget {
     return SizedBox(
       height: 100,
       width: 100,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(AppColors.main),
-          padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
-          shape: MaterialStateProperty.all(
-            const CircleBorder(),
-          ),
-        ),
-        onPressed: onChange,
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Positioned(
-              left: direction == RotationEnum.left ? null : 16,
-              child: Transform.rotate(
-                angle: direction.value * rotationAngle,
-                child: SizedBox(
-                  width: 30,
-                  height: 30,
-                  child: CustomPaint(
-                    painter: TrianglePainter(
-                      strokeColor: Colors.white,
-                      paintingStyle: PaintingStyle.fill,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Positioned(
-              right: direction == RotationEnum.right ? null : 16,
-              child: Transform.rotate(
-                angle: direction.value * rotationAngle,
-                child: SizedBox(
-                  width: 30,
-                  height: 30,
-                  child: CustomPaint(
-                    painter: TrianglePainter(
-                      strokeColor: Colors.white,
-                      paintingStyle: PaintingStyle.fill,
-                    ),
-                  ),
-                ),
-              ),
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.grey,
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: Offset(0, 3),
+              // changes position of shadow
             ),
           ],
+        ),
+        child: ElevatedButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(AppColors.main),
+            padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.all(0)),
+            shape: MaterialStateProperty.all(
+              const CircleBorder(),
+            ),
+          ),
+          onPressed: onChange,
+          child: Stack(
+            clipBehavior: Clip.none,
+            children: [
+              Positioned(
+                left: direction == RotationEnum.left ? null : 16,
+                child: Transform.rotate(
+                  angle: direction.value * rotationAngle,
+                  child: SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: CustomPaint(
+                      painter: TrianglePainter(
+                        strokeColor: Colors.white,
+                        paintingStyle: PaintingStyle.fill,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                right: direction == RotationEnum.right ? null : 16,
+                child: Transform.rotate(
+                  angle: direction.value * rotationAngle,
+                  child: SizedBox(
+                    width: 30,
+                    height: 30,
+                    child: CustomPaint(
+                      painter: TrianglePainter(
+                        strokeColor: Colors.white,
+                        paintingStyle: PaintingStyle.fill,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

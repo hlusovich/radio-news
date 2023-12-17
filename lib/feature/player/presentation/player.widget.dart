@@ -19,6 +19,7 @@ class PlayerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final bloc = context.read<PlayerBloc>();
     return Scaffold(
+      backgroundColor:  AppColors.darkBlue,
       body: BlocBuilder<PlayerBloc, PlayerBlocStates>(builder: (context, state) {
         if (state is PlayerBlocLoadingState) {
           return const LoadingScreenWidget();
@@ -56,7 +57,7 @@ class PlayerWidget extends StatelessWidget {
                       child: ClipPath(
                         clipper: WaveClipper(),
                         child: Container(
-                          color: AppColors.white,
+                          color:  AppColors.darkBlue,
                         ),
                       ),
                     ),
